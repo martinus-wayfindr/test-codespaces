@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug list files
+        run: ls -R
+
       - name: Make script executable
         run: chmod +x scripts/create_codespace.sh
 
