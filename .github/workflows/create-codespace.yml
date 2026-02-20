@@ -11,7 +11,6 @@ jobs:
 
     permissions:
       contents: read
-      codespaces: write
 
     steps:
       - name: Checkout repository
@@ -21,9 +20,11 @@ jobs:
         run: chmod +x scripts/create_codespace.sh
 
       - name: Create Codespace
+        env:
+          TOKEN: ${{ secrets.CODESPACE_PAT }}
         run: |
           ./scripts/create_codespace.sh \
             "${{ github.repository }}" \
             "${{ github.ref_name }}" \
-            "${{ secrets.GITHUB_TOKEN }}" \
+            "$TOKEN" \
             "standardLinux32gb"
