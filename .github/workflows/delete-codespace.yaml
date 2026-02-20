@@ -18,5 +18,5 @@ jobs:
           REPO: ${{ github.repository }}
           BRANCH: ${{ github.event.ref }}
         run: |
-          chmod +x script/delete-codespace.sh
-          ./script/delete-codespace.sh "$REPO" "$BRANCH" "$TOKEN"
+          chmod +x script/delete_codespace.sh
+          ./script/delete_codespace.sh "$REPO" "$BRANCH" "$TOKEN"
