@@ -20,7 +20,7 @@ jobs:
         run: ls -R
 
       - name: Make script executable
-        run: chmod +x scripts/create_codespace.sh
+        run: chmod +x script/create_codespace.sh
 
       - name: Create Codespace
         env:
