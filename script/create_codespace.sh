@@ -5,7 +5,7 @@ set -euo pipefail
 REPO="$1"
 BRANCH="$2"
 TOKEN="$3"
-MACHINE="${4:-standardLinux32gb}"
+MACHINE="${4:-basicLinux32gb}"
 
 if [ -z "$TOKEN" ]; then
   echo "ERROR: TOKEN is empty"
