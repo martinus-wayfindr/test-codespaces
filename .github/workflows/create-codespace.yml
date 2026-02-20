@@ -26,7 +26,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.CODESPACE_PAT }}
         run: |
-          ./scripts/create_codespace.sh \
+          ./script/create_codespace.sh \
             "${{ github.repository }}" \
             "${{ github.ref_name }}" \
             "$TOKEN" \
