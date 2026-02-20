@@ -1,0 +1,22 @@
+name: Auto Delete Codespace When Branch Deleted
+
+on:
+  delete:
+
+jobs:
+  delete-codespace:
+    if: github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Delete Codespace for Deleted Branch
+        env:
+          TOKEN: ${{ secrets.CODESPACE_PAT }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.ref }}
+        run: |
+          chmod +x script/delete-codespace.sh
+          ./script/delete-codespace.sh "$REPO" "$BRANCH" "$TOKEN"
