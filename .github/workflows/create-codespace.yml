@@ -1,0 +1,29 @@
+name: Auto Create Codespace Whenever a New Branch Created
+
+on:
+  create:
+    branches:
+      - '**'
+
+jobs:
+  create-codespace:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      codespaces: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x scripts/create_codespace.sh
+
+      - name: Create Codespace
+        run: |
+          ./scripts/create_codespace.sh \
+            "${{ github.repository }}" \
+            "${{ github.ref_name }}" \
+            "${{ secrets.GITHUB_TOKEN }}" \
+            "standardLinux32gb"
